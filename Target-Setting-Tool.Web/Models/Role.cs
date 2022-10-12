@@ -2,7 +2,7 @@
 
 namespace Target_Setting_Tool.Web.Models
 {
-    public class Roles
+    public class Role
     {
         public Guid Id { get; set; }
         [Required]

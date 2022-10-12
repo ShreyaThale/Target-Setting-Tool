@@ -1,7 +1,7 @@
-﻿@model Roles
+﻿@model Role
 
 @{
-    ViewData["Title"] = "AddRoles";
+    ViewData["Title"] = "AddRole";
 }
 @if (TempData["Error"] != null)
 {
@@ -14,7 +14,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddRoles">
+        <form asp-action="AddRole">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -58,14 +58,14 @@
             </div>*@
             <br/>
             <div class="form-group">
-                <input type="submit" value="Add" class="btn btn-primary" asp-action="AddRoles" />
+                <button type="submit" class="btn btn-primary">Add</button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="GetAllRoles">Back to List</a>
 </div>
 
 @section Scripts {

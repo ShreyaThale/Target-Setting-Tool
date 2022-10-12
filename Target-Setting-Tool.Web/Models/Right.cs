@@ -2,7 +2,7 @@
 
 namespace Target_Setting_Tool.Web.Models
 {
-    public class Rights
+    public class Right
     {
         public Guid Id { get; set; }
 
@@ -10,18 +10,18 @@ namespace Target_Setting_Tool.Web.Models
 
         public Guid CreatedBy { get; set; }
 
-        [DataType(DataType.DateTime)]
+        [DataType( DataType.DateTime )]
         public DateTime CreatedDate { get; set; }
 
         public Guid? ModifiedBy { get; set; }
 
-        [DataType(DataType.DateTime)]
+        [DataType( DataType.DateTime )]
         public DateTime? ModifiedDate { get; set; }
 
 
         public bool IsDeleted { get; set; }
 
-        [DataType(DataType.DateTime)]
+        [DataType( DataType.DateTime )]
         public DateTime? DeletedDate { get; set; }
 
         public Guid? DeletedBy { get; set; }

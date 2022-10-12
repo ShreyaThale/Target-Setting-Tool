@@ -1,23 +1,23 @@
-﻿@model Roles
+﻿@model Right
 
 @{
-    ViewData["Title"] = "EditRoles";
+    ViewData["Title"] = "AddRight";
 }
 
-<h1>EditRoles</h1>
+<h1>AddRights</h1>
 
+<h4>Rights</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="EditRoles">
+        <form asp-action="AddRight">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
+  @*          <div class="form-group">
                 <label asp-for="CreatedBy" class="control-label"></label>
                 <input asp-for="CreatedBy" class="form-control" />
                 <span asp-validation-for="CreatedBy" class="text-danger"></span>
@@ -53,14 +53,14 @@
                 <span asp-validation-for="DeletedBy" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-primary" asp-action="EditRoles"/>
+                <button type="submit" class="btn btn-primary">AddRight</button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="GetAllRoles">Back to List</a>
+    <a asp-action="GetAllRights">Back to List</a>
 </div>
 
 @section Scripts {
