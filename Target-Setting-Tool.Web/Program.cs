@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Target_Setting_Tool.Web.Contexts;
 using Target_Setting_Tool.Web.Services.RightsServices;
 using Target_Setting_Tool.Web.Services.RolesServices;
+using Target_Setting_Tool.Web.Services.UserServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IRightsService, RightsService>();
 builder.Services.AddScoped<IRolesService, RolesService>();
-string connectionString = builder.Configuration.GetConnectionString("ShreyaConnectionstring");
+builder.Services.AddScoped<IUserService, UserService>();
+string connectionString = builder.Configuration.GetConnectionString("MalayConnectionString");
 builder.Services.AddDbContext<ApplicationDbContext>(u => u.UseSqlServer(connectionString));
 
 var app = builder.Build();
@@ -31,6 +33,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Rights}/{action=GetAllRights}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

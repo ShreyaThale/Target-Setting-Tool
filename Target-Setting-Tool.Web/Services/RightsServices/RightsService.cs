@@ -19,7 +19,7 @@ namespace Target_Setting_Tool.Web.Services.RightsServices
             {
                 rights.Id = new Guid();
                 rights.CreatedDate = DateTime.Now;
-                _rightDbContext.MST_RightsTBl.AddAsync(rights);
+                _rightDbContext.MST_Rights.AddAsync(rights);
                 return await _rightDbContext.SaveChangesAsync() >= 1 ? true : false;
             }
             return false;
@@ -27,7 +27,7 @@ namespace Target_Setting_Tool.Web.Services.RightsServices
 
         private async Task<bool> IsRightsExist(Rights rights)
         {
-            Rights res = await _rightDbContext.MST_RightsTBl.Where(x => x.Name == rights.Name && x.IsDeleted == false).FirstOrDefaultAsync();
+            Rights res = await _rightDbContext.MST_Rights.Where(x => x.Name == rights.Name && x.IsDeleted == false).FirstOrDefaultAsync();
             if (res != null)
             {
                 return true;
@@ -39,7 +39,7 @@ namespace Target_Setting_Tool.Web.Services.RightsServices
         {
             Rights rights = await GetRightsById(id);
             rights.IsDeleted = true;
-            _rightDbContext.MST_RightsTBl.Update(rights);
+            _rightDbContext.MST_Rights.Update(rights);
             await _rightDbContext.SaveChangesAsync();
 
         }
@@ -50,7 +50,7 @@ namespace Target_Setting_Tool.Web.Services.RightsServices
             if (!IsRightExist)
             {
                 rights.ModifiedDate = DateTime.Now;
-                _rightDbContext.MST_RightsTBl.Update(rights);
+                _rightDbContext.MST_Rights.Update(rights);
                 return await _rightDbContext.SaveChangesAsync() >= 1 ? true : false;
             }
             return false;
@@ -58,13 +58,13 @@ namespace Target_Setting_Tool.Web.Services.RightsServices
 
         public async Task<List<Rights>> GetAllRights()
         {
-            return await _rightDbContext.MST_RightsTBl.Where(x => x.IsDeleted == false).ToListAsync();
+            return await _rightDbContext.MST_Rights.Where(x => x.IsDeleted == false).ToListAsync();
 
         }
 
         public async Task<Rights> GetRightsById(Guid id)
         {
-            Rights rights = await _rightDbContext.MST_RightsTBl.Where(x => x.Id == id).FirstOrDefaultAsync();
+            Rights rights = await _rightDbContext.MST_Rights.Where(x => x.Id == id).FirstOrDefaultAsync();
             return rights;
         }
     }
