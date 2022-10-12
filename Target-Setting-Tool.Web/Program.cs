@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using TargetSettingTool.Web.Context;
+using TargetSettingTool.Web.RightsServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IRightsService, RightsService>();
+var YashConnectionString = builder.Configuration.GetConnectionString("YashConnectionstring");
+builder.Services.AddDbContext<ApplicationDbContext>(u => u.UseSqlServer(YashConnectionString));
 
 var app = builder.Build();
 
@@ -22,6 +29,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Rights}/{action=GetAllRights}/{id?}");
 
 app.Run();
