@@ -1,23 +1,27 @@
-﻿@model Rights
+﻿@model Roles
 
 @{
-    ViewData["Title"] = "AddRights";
+    ViewData["Title"] = "AddRoles";
 }
+@if (TempData["Error"] != null)
+{
+        <div class="alert alert-danger">
+            <strong>@TempData["Error"]</strong>
+        </div>
+}
+<h1>AddRoles</h1>
 
-<h1>AddRights</h1>
-
-<h4>Rights</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddRights">
+        <form asp-action="AddRoles">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-  @*          <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="CreatedBy" class="control-label"></label>
                 <input asp-for="CreatedBy" class="form-control" />
                 <span asp-validation-for="CreatedBy" class="text-danger"></span>
@@ -52,8 +56,9 @@
                 <input asp-for="DeletedBy" class="form-control" />
                 <span asp-validation-for="DeletedBy" class="text-danger"></span>
             </div>*@
+            <br/>
             <div class="form-group">
-                <input type="submit" value="AddRights" class="btn btn-primary" />
+                <input type="submit" value="Add" class="btn btn-primary" asp-action="AddRoles" />
             </div>
         </form>
     </div>

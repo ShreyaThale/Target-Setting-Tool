@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TargetSettingTool.Web.Models;
+using Target_Setting_Tool.Web.Models;
 
-namespace TargetSettingTool.Web.Context
+namespace Target_Setting_Tool.Web.Contexts
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> context):base(context)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> context) : base(context)
         {
-                
+
         }
-        public DbSet<Rights> MST_RightsTBl { get; set; }
+        public DbSet<Rights> MST_Rights { get; set; }
+        public DbSet<Roles> MST_Roles { get; set; }
     }
 }

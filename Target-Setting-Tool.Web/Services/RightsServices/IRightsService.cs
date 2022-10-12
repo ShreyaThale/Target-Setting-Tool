@@ -1,6 +1,6 @@
-﻿using TargetSettingTool.Web.Models;
+﻿using Target_Setting_Tool.Web.Models;
 
-namespace TargetSettingTool.Web.RightsServices
+namespace Target_Setting_Tool.Web.Services.RightsServices
 {
     public interface IRightsService
     {

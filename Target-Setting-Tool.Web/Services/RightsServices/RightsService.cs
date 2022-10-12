@@ -1,8 +1,8 @@
-﻿using TargetSettingTool.Web.Context;
-using TargetSettingTool.Web.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Target_Setting_Tool.Web.Models;
+using Target_Setting_Tool.Web.Contexts;
 
-namespace TargetSettingTool.Web.RightsServices
+namespace Target_Setting_Tool.Web.Services.RightsServices
 {
     public class RightsService : IRightsService
     {
@@ -27,8 +27,9 @@ namespace TargetSettingTool.Web.RightsServices
 
         private async Task<bool> IsRightsExist(Rights rights)
         {
-            Rights res = await _rightDbContext.MST_RightsTBl.Where(x=>x.Name == rights.Name && x.IsDeleted == false).FirstOrDefaultAsync();
-            if (res != null) {
+            Rights res = await _rightDbContext.MST_RightsTBl.Where(x => x.Name == rights.Name && x.IsDeleted == false).FirstOrDefaultAsync();
+            if (res != null)
+            {
                 return true;
             }
             return false;
@@ -56,8 +57,8 @@ namespace TargetSettingTool.Web.RightsServices
         }
 
         public async Task<List<Rights>> GetAllRights()
-        { 
-         return await _rightDbContext.MST_RightsTBl.Where(x=>x.IsDeleted == false).ToListAsync();
+        {
+            return await _rightDbContext.MST_RightsTBl.Where(x => x.IsDeleted == false).ToListAsync();
 
         }
 
