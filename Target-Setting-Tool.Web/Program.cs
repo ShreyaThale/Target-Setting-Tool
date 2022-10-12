@@ -1,14 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-using TargetSettingTool.Web.Context;
-using TargetSettingTool.Web.RightsServices;
+using Target_Setting_Tool.Web.Contexts;
+using Target_Setting_Tool.Web.Services.RightsServices;
+using Target_Setting_Tool.Web.Services.RolesServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IRightsService, RightsService>();
-var YashConnectionString = builder.Configuration.GetConnectionString("YashConnectionstring");
-builder.Services.AddDbContext<ApplicationDbContext>(u => u.UseSqlServer(YashConnectionString));
+builder.Services.AddScoped<IRolesService, RolesService>();
+string connectionString = builder.Configuration.GetConnectionString("ShreyaConnectionstring");
+builder.Services.AddDbContext<ApplicationDbContext>(u => u.UseSqlServer(connectionString));
 
 var app = builder.Build();
 

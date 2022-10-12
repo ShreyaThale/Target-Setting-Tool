@@ -1,13 +1,19 @@
-﻿@model IEnumerable<Rights>
+﻿@model IEnumerable<Roles>
 
 @{
-    ViewData["Title"] = "GetAllRights";
+    ViewData["Title"] = "GetAllRoles";
 }
+@if (TempData["Success"] != null)
+{
+        <div class="alert alert-success">
+            <strong>@TempData["Success"]</strong>
+        </div>
+}
+<h1>GetAllRoles</h1>
 
-<h1>GetAllRights</h1>
 
 <p>
-    <a asp-action="AddRights" asp-controller="Rights">AddRights</a>
+    <a asp-action="AddRoles">Add Role</a>
 </p>
 <table class="table">
     <thead>
@@ -15,27 +21,27 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.CreatedBy)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.ModifiedBy)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.ModifiedDate)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.DeletedDate)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.DeletedBy)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -45,31 +51,30 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
+            </td>*@
+           @* <td>
                 @Html.DisplayFor(modelItem => item.ModifiedBy)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.ModifiedDate)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.DeletedDate)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.DeletedBy)
-            </td>
+            </td>*@
             <td>
-                <a asp-action="EditRights" asp-controller="Rights" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="DeleteRights" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="EditRoles" asp-route-id="@item.Id">Edit</a> 
+                <a asp-action="DeleteRole" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
