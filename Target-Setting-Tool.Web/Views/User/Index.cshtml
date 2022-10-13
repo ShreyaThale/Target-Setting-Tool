@@ -6,7 +6,7 @@
 
 @if (TempData["msg"] != null)
 {
-    <div class="alert alert-@TempData["type"]" role="alert">
+    <div id="alertBox" class="alert alert-@TempData["type"]" role="alert">
         @TempData["msg"]
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -81,6 +81,7 @@
 </div>
 
 @section Scripts {
+    <script src="~/js/Tst.js" defer></script>
     <script>
         function deleteBtnClick(id) {
             $('#confirmDelete').prop('href', `/User/DeleteUser/${id}`);

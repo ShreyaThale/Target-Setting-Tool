@@ -5,7 +5,7 @@
 }
 @if (TempData["Error"] != null)
 {
-        <div class="alert alert-danger">
+        <div id="alertBox" class="alert alert-danger">
             <strong>@TempData["Error"]</strong>
         </div>
 }
@@ -58,7 +58,7 @@
             </div>*@
             <br/>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Add</button>
+                <input type="submit" value="Add" class="btn btn-primary" asp-action="AddRole" />
             </div>
         </form>
     </div>
@@ -70,4 +70,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/Tst.js" defer></script>
 }

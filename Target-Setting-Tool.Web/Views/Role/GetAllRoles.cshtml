@@ -3,17 +3,30 @@
 @{
     ViewData["Title"] = "GetAllRoles";
 }
+
 @if (TempData["Success"] != null)
 {
-        <div class="alert alert-success">
+        <div id="alertBox" class="alert alert-success">
             <strong>@TempData["Success"]</strong>
+        </div>
+}
+@if (TempData["Update"] != null)
+{
+        <div id="alertBox" class="alert alert-success">
+            <strong>@TempData["Update"]</strong>
+        </div>
+}
+@if (TempData["Delete"] != null)
+{
+        <div id="alertBox" class="alert alert-success">
+            <strong>@TempData["Delete"]</strong>
         </div>
 }
 <h1>GetAllRoles</h1>
 
 
 <p>
-    <a asp-action="AddRole">Add Role</a>
+    <a asp-action="AddRole" class="btn btn-info">Add Role</a>
 </p>
 <table class="table">
     <thead>
@@ -73,10 +86,34 @@
                 @Html.DisplayFor(modelItem => item.DeletedBy)
             </td>*@
             <td>
-                <a asp-action="EditRole" asp-route-id="@item.Id">Edit</a> 
-                <a asp-action="DeleteRole" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="EditRole" asp-route-id="@item.Id" class="btn btn-outline-warning">Edit</a> 
+                <a class="btn btn-outline-danger"  onclick="DeleteOnClick('@item.Id.ToString()')">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ShowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Role</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a type="button" class="btn btn-danger" id="confirmDelete">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section scripts{
+    <script src="~/js/Tst.js" defer></script>
+}

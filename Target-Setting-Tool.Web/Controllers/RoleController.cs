@@ -72,6 +72,7 @@ namespace Target_Setting_Tool.Web.Controllers
                 bool editSuccess = await _rolesService.EditRole( role );
                 if ( editSuccess )
                 {
+                    TempData["Update"] = "Role Updated Successfully!";
                     return RedirectToAction( "GetAllRoles" );
                 }
                 else
@@ -91,6 +92,7 @@ namespace Target_Setting_Tool.Web.Controllers
             try
             {
                 await _rolesService.DeleteRole( id );
+                TempData["Delete"] = "Role Deleted Successfully!";
                 return RedirectToAction( "GetAllRoles" );
             }
             catch ( Exception e )
