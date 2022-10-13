@@ -14,8 +14,8 @@ namespace Target_Setting_Tool.Web.Services.UserServices
 
         public async Task<bool> AddUser( User user )
         {
-            User existingUser = await _userDbContext.MST_Users.FirstOrDefaultAsync( u => u.Email == user.Email || u.EmployeeCode == user.EmployeeCode );
-            if ( existingUser == null )
+            User existingUser = await _userDbContext.MST_Users.FirstOrDefaultAsync(u => u.IsDeleted==false && (u.Email == user.Email || u.EmployeeCode==user.EmployeeCode));
+            if (existingUser == null)
             {
                 user.CreatedDate = DateTime.Now;
                 _userDbContext.MST_Users.AddAsync( user );
@@ -49,13 +49,13 @@ namespace Target_Setting_Tool.Web.Services.UserServices
 
         public async Task<bool> UpdateUser( User user )
         {
-            User existingUser = await _userDbContext.MST_Users.FirstOrDefaultAsync( u => (u.Id != user.Id)
-                && (u.Email == user.Email || u.EmployeeCode == user.EmployeeCode) );
-            if ( existingUser == null )
+            User existingUser = await _userDbContext.MST_Users.FirstOrDefaultAsync(u => u.IsDeleted == false && u.Id!=user.Id
+                && (u.Email == user.Email || u.EmployeeCode == user.EmployeeCode));
+            if (existingUser == null)
             {
                 user.ModifiedDate = DateTime.Now;
-                _userDbContext.Entry<User>( user ).State = EntityState.Modified;
-                return await _userDbContext.SaveChangesAsync() == 1;
+                _userDbContext.MST_Users.Update(user);
+                return await _userDbContext.SaveChangesAsync() == 1; 
             }
             else
             {
@@ -69,7 +69,7 @@ namespace Target_Setting_Tool.Web.Services.UserServices
             user.DeletedDate = DateTime.Now;
             user.DeletedBy = user.Id;
             user.IsDeleted = true;
-            _userDbContext.Entry<User>( user ).State = EntityState.Modified;
+            _userDbContext.MST_Users.Update(user);
             return await _userDbContext.SaveChangesAsync() == 1;
         }
     }
