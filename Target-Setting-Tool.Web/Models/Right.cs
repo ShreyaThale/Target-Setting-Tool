@@ -6,6 +6,7 @@ namespace Target_Setting_Tool.Web.Models
     {
         public Guid Id { get; set; }
 
+        [RegularExpression(@"^[A-Za-z]+$", ErrorMessage = "Name Should Contain Alphabet Letters Only")]
         public string Name { get; set; }
 
         public Guid CreatedBy { get; set; }

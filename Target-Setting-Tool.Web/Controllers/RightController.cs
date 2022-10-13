@@ -40,10 +40,12 @@ namespace Target_Setting_Tool.Web.Controllers
                 bool res = await _rightsService.AddRight( rights );
                 if ( res )
                 {
+                    TempData["Success"] = "Rights Added Succesfully";
                     return RedirectToAction( "GetAllRights" );
                 }
                 else
                 {
+                    TempData["Error"] = "Rights Already Exist";
                     return View( rights );
                 }
             }
@@ -68,10 +70,12 @@ namespace Target_Setting_Tool.Web.Controllers
                 bool res = await _rightsService.EditRight( rights );
                 if ( res )
                 {
+                    TempData["Success"] = "Rights Edited Succesfully";
                     return RedirectToAction( "GetAllRights" );
                 }
                 else
                 {
+                    TempData["Error"] = "Rights Already Exist/Unable To Change";
                     return View( rights );
                 }
             }
@@ -85,6 +89,7 @@ namespace Target_Setting_Tool.Web.Controllers
             try
             {
                 await _rightsService.DeleteRight( id );
+                TempData["Success"] = "Rights Deleted Succesfully";
                 return RedirectToAction( "GetAllRights" );
 
             }
