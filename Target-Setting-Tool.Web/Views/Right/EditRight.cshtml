@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "EditRight";
 }
+@if (TempData["Error"] != null)
+{
+        <div class="alert alert-danger">
+            <strong>@TempData["Error"]</strong>
+        </div>
+}
 
 <h1>EditRights</h1>
 

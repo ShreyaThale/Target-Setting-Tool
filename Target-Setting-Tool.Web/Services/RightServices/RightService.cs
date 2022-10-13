@@ -19,7 +19,7 @@ namespace Target_Setting_Tool.Web.Services.RightServices
             {
                 rights.Id = new Guid();
                 rights.CreatedDate = DateTime.Now;
-                _rightDbContext.MST_Rights.AddAsync( rights );
+                _rightDbContext.MST_Rights.AddAsync(rights);
                 return await _rightDbContext.SaveChangesAsync() >= 1 ? true : false;
             }
             return false;

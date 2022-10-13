@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IRightService, RightService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IUserService, UserService>();
-string connectionString = builder.Configuration.GetConnectionString( "JagrutConnectionString" );
+string connectionString = builder.Configuration.GetConnectionString("YashConnectioString");
 builder.Services.AddDbContext<ApplicationDbContext>( u => u.UseSqlServer( connectionString ) );
 
 var app = builder.Build();
